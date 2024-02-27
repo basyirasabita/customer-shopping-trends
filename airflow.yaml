@@ -30,7 +30,7 @@ services:
       interval: 5s
       retries: 5
     volumes :
-      - ./dags/P2M3_basyira_sabita_data_raw.csv:/files/P2M3_basyira_sabita_data_raw.csv
+      - ./dags/customer_shopping_trends_raw.csv:/files/customer_shopping_trends_raw.csv
     env_file:
       - .env
 

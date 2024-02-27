@@ -48,6 +48,6 @@ COPY table_m3(
     "Preferred Payment Method",
     "Frequency of Purchases"
 )
-FROM '/files/P2M3_basyira_sabita_data_raw.csv'
+FROM '/files/customer_shopping_trends_raw.csv'
 DELIMITER ','
 CSV HEADER;

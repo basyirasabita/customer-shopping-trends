@@ -43,7 +43,7 @@ def fetch_data_from_postgres(database, username, password):
 
     # Fetch data using sql query
     df = pd.read_sql_query("select * from table_m3", connection) 
-    df.to_csv('/opt/airflow/dags/P2M3_basyira_sabita_data_raw.csv', sep=',', index=False)
+    df.to_csv('/opt/airflow/dags/customer_shopping_trends_raw.csv', sep=',', index=False)
 
 def data_cleaning():
     '''
@@ -55,7 +55,7 @@ def data_cleaning():
         
         Example of use: data_cleaning()
     '''
-    df_raw = pd.read_csv('/opt/airflow/dags/P2M3_basyira_sabita_data_raw.csv')
+    df_raw = pd.read_csv('/opt/airflow/dags/customer_shopping_trends_raw.csv')
     df = df_raw.copy()
 
     columns = df.columns
@@ -81,7 +81,7 @@ def data_cleaning():
     df.drop_duplicates(inplace=True)
 
     # Saving to new csv
-    df.to_csv('/opt/airflow/dags/P2M3_basyira_sabita_data_clean.csv', index=False)
+    df.to_csv('/opt/airflow/dags/customer_shopping_trends_clean.csv', index=False)
 
 
 def upload_to_elasticsearch():
@@ -95,7 +95,7 @@ def upload_to_elasticsearch():
         Example of use: upload_to_elasticsearch()
     '''
     es = Elasticsearch("http://elasticsearch:9200")
-    df = pd.read_csv('/opt/airflow/dags/P2M3_basyira_sabita_data_clean.csv')
+    df = pd.read_csv('/opt/airflow/dags/customer_shopping_trends_clean.csv')
     
     for i, r in df.iterrows():
         doc = r.to_dict()  # Convert the row to a dictionary
