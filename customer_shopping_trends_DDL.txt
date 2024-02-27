@@ -1,0 +1,53 @@
+Dataset: https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset
+
+DDL Syntax:
+-- Create Database
+CREATE DATABASE airflow_m3
+
+-- Create Table
+CREATE TABLE table_m3 (
+    "Customer ID" SERIAL PRIMARY KEY,
+    "Age" INT,
+    "Gender" VARCHAR(10),
+    "Item Purchased" VARCHAR(50),
+    "Category" VARCHAR(50),
+    "Purchase Amount (USD)" INT,
+    "Location" VARCHAR(255),
+    "Size" VARCHAR(10),
+    "Color" VARCHAR(50),
+    "Season" VARCHAR(10),
+    "Review Rating" DECIMAL,
+    "Subscription Status" VARCHAR(10),
+    "Shipping Type" VARCHAR(50),
+    "Discount Applied" VARCHAR(10),
+    "Promo Code Used" VARCHAR(10),
+    "Previous Purchases" INT,
+    "Preferred Payment Method" VARCHAR(50),
+    "Frequency of Purchases" VARCHAR(50)
+);
+
+DML Syntax:
+-- Copy data from csv
+COPY table_m3(
+    "Customer ID",
+    "Age",
+    "Gender",
+    "Item Purchased",
+    "Category",
+    "Purchase Amount (USD)",
+    "Location",
+    "Size",
+    "Color",
+    "Season",
+    "Review Rating",
+    "Subscription Status",
+    "Shipping Type",
+    "Discount Applied",
+    "Promo Code Used",
+    "Previous Purchases",
+    "Preferred Payment Method",
+    "Frequency of Purchases"
+)
+FROM '/files/P2M3_basyira_sabita_data_raw.csv'
+DELIMITER ','
+CSV HEADER;
